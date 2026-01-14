@@ -487,7 +487,7 @@ variable "s3_models_bucket_create" {
 }
 
 variable "s3_models_bucket_name" {
-  description = "Name of the S3 bucket for storing ML models. If empty, will use naming pattern: {var.name}-models-{account_id}-{region}"
+  description = "Name of the S3 bucket for storing ML models. If empty, will use naming pattern: {var.name}-models-{region}-randomstring"
   type        = string
   default     = ""
 }

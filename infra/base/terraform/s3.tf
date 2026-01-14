@@ -30,7 +30,7 @@ locals {
 resource "aws_s3_bucket" "models_bucket" {
   count = var.enable_s3_models_storage && var.s3_models_bucket_create ? 1 : 0
 
-  bucket        = var.s3_models_bucket_name != "" ? var.s3_models_bucket_name : null
+  bucket        = var.s3_models_bucket_name != "" ? "${var.s3_models_bucket_name}-${data.aws_caller_identity.current.account_id}" : null
   bucket_prefix = var.s3_models_bucket_name == "" ? "${local.name}-models-${local.region}-" : null
 
   tags = merge(local.tags, {
